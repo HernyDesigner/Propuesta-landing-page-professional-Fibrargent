@@ -12,7 +12,7 @@ const TEXTOS_COMUNES = {
   muestra: "Espacio de muestra para incorporar un producto del catálogo."
 };
 
-const PROD_IMG_FALLBACK = "https://images.unsplash.com/photo-1629949009762-c0e66bbd08c8?q=80&w=800&auto=format&fit=crop";
+const PROD_IMG_FALLBACK = "https://mayorista.fibrargent.com.ar/wp-content/uploads/2025/11/almohada-suamir-blanca-rellena-fibra-poliester-espuma-alta-densidad-hipersoft-tela-algodon-puro-funda-fibras-naturales-fibrargent-bolsa-pvc-soga-dorada-transporte-con-cierre.webp";
 
 const PRODUCTOS = [
   { nombre: "Suamir Esencia", categoria: "Almohadas", desc: TEXTOS_COMUNES.almohadas, img: PROD_IMG_FALLBACK },
@@ -41,9 +41,9 @@ const SUCURSALES = [
 ];
 
 const HERO_IMAGES = [
-  { src: "https://images.unsplash.com/photo-1584824486516-0555a07fc511?q=80&w=1200&auto=format&fit=crop", alt: "Almohada en cama luminosa" },
-  { src: "https://images.unsplash.com/photo-1542728928-1413d1894ed1?q=80&w=1200&auto=format&fit=crop", alt: "Detalle de textiles y almohadas" },
-  { src: "https://images.unsplash.com/photo-1629949009762-c0e66bbd08c8?q=80&w=1200&auto=format&fit=crop", alt: "Composición de almohadas en dormitorio" }
+  { src: "https://mayorista.fibrargent.com.ar/wp-content/uploads/2025/11/almohada-alma-blanca-funda-algodon-labrado-180-hilos-rellena-fibra-poliester-espuma-alta-densidad-hipersoft-doble-costura-fibrargent-hotel-cinco-estrellas.webp", alt: "Almohada en cama luminosa" },
+  { src: "https://mayorista.fibrargent.com.ar/wp-content/uploads/2025/11/cherie-capullos-ambiente.webp", alt: "Detalle de textiles y almohadas" },
+  { src: "https://mayorista.fibrargent.com.ar/wp-content/uploads/2026/06/sabanas-florencia-ambiente-01.webp", alt: "Composición de almohadas en dormitorio" }
 ];
 
 

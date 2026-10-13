@@ -11,7 +11,7 @@ export default {
         brand: {
           light: '#f5f5f4', // stone-100
           DEFAULT: '#a8a29e', // stone-400 (acento suave)
-          dark: '#292524', // stone-800 (textos principales)
+          dark: '#020241', // stone-800 (textos principales)
         }
       },
       fontFamily: {
