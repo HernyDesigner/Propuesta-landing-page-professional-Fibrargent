@@ -1,0 +1,37 @@
+# 📦 Dependencias de Node.js
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# 🏗️ Archivos de compilación / Build (Vite, PostCSS, etc.)
+dist/
+dist-ssr/
+build/
+.vite/
+
+# 📝 Logs de errores
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 🔐 Variables de entorno (¡Muy importante no subirlas!)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 💻 Archivos del Sistema Operativo
+.DS_Store
+Thumbs.db
+
+# 🛠️ Configuraciones de Editores de Código (opcional)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

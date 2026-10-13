@@ -1,18 +1,8 @@
-import './style.css';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Lenis from '@studio-freight/lenis';
-
-gsap.registerPlugin(ScrollTrigger);
-
 /**
  * 1. DATOS EDITABLES CENTRALIZADOS
- * --------------------------------
  */
-
-// TODO: Completar con el número real de la empresa (ej: 5491123456789)
 const CONFIG_WHATSAPP = {
-  telefono: "", 
+  telefono: "", // TODO: Agregar número (ej: 5491123456789)
   mensaje: "Hola, quisiera consultar por las almohadas y los protectores de colchón de Fibrargent."
 };
 
@@ -22,7 +12,6 @@ const TEXTOS_COMUNES = {
   muestra: "Espacio de muestra para incorporar un producto del catálogo."
 };
 
-// Fotos temporales (Unsplash) - TODO: Reemplazar por fotos reales del catálogo
 const PROD_IMG_FALLBACK = "https://images.unsplash.com/photo-1629949009762-c0e66bbd08c8?q=80&w=800&auto=format&fit=crop";
 
 const PRODUCTOS = [
@@ -59,25 +48,22 @@ const HERO_IMAGES = [
 
 
 /**
- * 2. RENDERIZADO DOM
- * ------------------
+ * 2. FUNCIONES DE RENDERIZADO
  */
-
-// A. Generar Grilla de Productos
 const renderProducts = () => {
   const container = document.getElementById('productos-grid');
   PRODUCTOS.forEach((prod, i) => {
     const isMuestra = prod.isMuestra ? `<span class="absolute top-4 right-4 bg-brand-light text-stone-500 text-xs px-2 py-1 rounded-sm shadow-sm z-20">Muestra</span>` : '';
-    
+    // Retraso escalonado (stagger) de forma manual
+    const delay = (i % 4) * 100;
+
     container.innerHTML += `
-      <article class="group relative aspect-[4/3] sm:aspect-square overflow-hidden rounded-sm bg-stone-200 cursor-pointer gs-product opacity-0 translate-y-8" tabindex="0">
+      <article class="group relative aspect-[4/3] sm:aspect-square overflow-hidden rounded-sm bg-stone-200 cursor-pointer reveal" style="transition-delay: ${delay}ms" tabindex="0">
         ${isMuestra}
         <img src="${prod.img}" alt="${prod.nombre}" loading="${i < 4 ? 'eager' : 'lazy'}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-focus:scale-105">
         
-        <!-- Degradado base para el título -->
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10 pointer-events-none"></div>
         
-        <!-- Capa hover para descripción -->
         <div class="absolute inset-0 bg-black/80 z-10 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
           <p class="text-stone-200 text-sm leading-relaxed translate-y-4 group-hover:translate-y-0 group-focus:translate-y-0 transition-transform duration-300">${prod.desc}</p>
         </div>
@@ -91,7 +77,6 @@ const renderProducts = () => {
   });
 };
 
-// B. Generar Sucursales
 const renderSucursales = () => {
   const container = document.getElementById('sucursales-list');
   SUCURSALES.forEach((suc) => {
@@ -113,7 +98,6 @@ const renderSucursales = () => {
   });
 };
 
-// C. Configurar WhatsApp
 const setupWhatsApp = () => {
   const btnFloat = document.getElementById('floating-whatsapp');
   const btnFooter = document.getElementById('footer-whatsapp');
@@ -123,7 +107,6 @@ const setupWhatsApp = () => {
     btnFloat.href = url;
     btnFooter.href = url;
   } else {
-    // Estado deshabilitado visual si no hay número
     const disableStyles = "opacity-50 grayscale cursor-not-allowed pointer-events-none";
     btnFloat.className += ` ${disableStyles}`;
     btnFloat.title = "WhatsApp pendiente de configurar";
@@ -132,51 +115,17 @@ const setupWhatsApp = () => {
   }
 };
 
+
 /**
- * 3. FUNCIONES DE UI & ANIMACIONES
- * --------------------------------
+ * 3. INTERACCIONES NATIVAS
  */
-
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-const initLenis = () => {
-  const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: !prefersReducedMotion,
-  });
-
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
-
-  // Navegación suave con compensación de header
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const targetId = link.getAttribute('href');
-      if (targetId.startsWith('#')) {
-        e.preventDefault();
-        const target = document.querySelector(targetId);
-        if (target) {
-          // Compensar 80px (altura de nav h-20)
-          lenis.scrollTo(target, { offset: -80 });
-          // Cerrar menú móvil si está abierto
-          document.getElementById('mobile-menu').classList.add('hidden');
-        }
-      }
-    });
-  });
-};
-
 const initHeroSlider = () => {
   const container = document.getElementById('hero-slider');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let currentIndex = 0;
   let timer;
-  let isPlaying = !prefersReducedMotion; // Detener por defecto si hay reduce motion
+  let isPlaying = !prefersReducedMotion;
 
-  // Inyectar imgs
   HERO_IMAGES.forEach((img, index) => {
     const activeClass = index === 0 ? 'opacity-100' : 'opacity-0';
     container.innerHTML += `<img src="${img.src}" alt="${img.alt}" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 slide-img ${activeClass}">`;
@@ -192,15 +141,9 @@ const initHeroSlider = () => {
     slides[currentIndex].classList.add('opacity-100');
   };
 
-  const nextSlide = () => {
-    const next = (currentIndex + 1) % slides.length;
-    goToSlide(next);
-  };
+  const nextSlide = () => goToSlide((currentIndex + 1) % slides.length);
 
-  const startPlay = () => {
-    if(isPlaying) timer = setInterval(nextSlide, 5000);
-  };
-
+  const startPlay = () => { if(isPlaying) timer = setInterval(nextSlide, 5000); };
   const stopPlay = () => clearInterval(timer);
 
   const btnPause = document.getElementById('slider-pause');
@@ -217,76 +160,54 @@ const initHeroSlider = () => {
   };
 
   btnPause.addEventListener('click', togglePlay);
-  
-  // Pausar con interacción
   container.parentElement.addEventListener('mouseenter', stopPlay);
   container.parentElement.addEventListener('mouseleave', () => { if(isPlaying) startPlay(); });
   
-  // Estado inicial
-  if(!isPlaying) togglePlay(); // Forzar update icono si empieza detenido
-  else startPlay();
-};
-
-const initAnimations = () => {
-  if (prefersReducedMotion) {
-    // Si hay reduce motion, revelar todo sin animación
-    gsap.set('.gs-reveal, .gs-product', { opacity: 1, y: 0 });
-    return;
-  }
-
-  // Animaciones de entrada genéricas
-  gsap.utils.toArray('.gs-reveal').forEach(elem => {
-    gsap.fromTo(elem, 
-      { opacity: 0, y: 30 },
-      { 
-        opacity: 1, 
-        y: 0, 
-        duration: 0.8, 
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: elem,
-          start: "top 85%",
-          toggleActions: "play none none none"
-        }
-      }
-    );
-  });
-
-  // Grilla de productos escalonada
-  ScrollTrigger.batch('.gs-product', {
-    onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, stagger: 0.1, duration: 0.8, ease: "power2.out", overwrite: true }),
-    start: "top 85%",
-  });
+  if(!isPlaying) togglePlay(); else startPlay();
 };
 
 const setupMenu = () => {
   const btn = document.getElementById('menu-toggle');
   const menu = document.getElementById('mobile-menu');
   
-  btn.addEventListener('click', () => {
+  const toggleMenu = () => {
     menu.classList.toggle('hidden');
     menu.classList.toggle('flex');
+  };
+
+  btn.addEventListener('click', toggleMenu);
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', toggleMenu);
   });
 
-  // Cerrar con Escape
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
-      menu.classList.add('hidden');
-      menu.classList.remove('flex');
-    }
+    if (e.key === 'Escape' && !menu.classList.contains('hidden')) toggleMenu();
   });
 };
 
-document.getElementById('current-year').textContent = new Date().getFullYear();
+// Reemplazo de ScrollTrigger con IntersectionObserver nativo
+const initAnimations = () => {
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+};
+
 
 // Inicialización
 document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('current-year').textContent = new Date().getFullYear();
   renderProducts();
   renderSucursales();
   setupWhatsApp();
   setupMenu();
-  initLenis();
   initHeroSlider();
-  // Pequeño timeout para que el DOM esté listo antes de ScrollTrigger
-  setTimeout(initAnimations, 100);
+  initAnimations();
 });
