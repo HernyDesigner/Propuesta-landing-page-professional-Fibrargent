@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fibrargent | Almohadas y protectores de colchón</title>
+  <!-- TODO: Retirar noindex antes de publicar -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Conocé las almohadas y protectores de colchón de Fibrargent. Descubrí nuestras líneas para tu descanso." />
+</head>
+<body class="relative">
+
+  <!-- 1. NAVBAR -->
+  <nav id="navbar" class="fixed top-0 w-full bg-brand-light/95 backdrop-blur-sm z-50 transition-transform duration-300 border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <!-- TODO: Reemplazar por Logo real -->
+      <a href="#inicio" class="text-2xl font-serif font-semibold tracking-wide nav-link" aria-label="Volver al inicio">
+        FIBRARGENT<span class="text-stone-400 text-sm italic ml-2 block sm:inline">Muestra</span>
+      </a>
+      
+      <!-- Menú Desktop -->
+      <div class="hidden md:flex gap-8 text-sm uppercase tracking-widest">
+        <a href="#productos" class="hover:text-stone-500 transition-colors nav-link">Productos</a>
+        <a href="#quienes-somos" class="hover:text-stone-500 transition-colors nav-link">Quiénes somos</a>
+        <a href="#sucursales" class="hover:text-stone-500 transition-colors nav-link">Sucursales</a>
+      </div>
+
+      <!-- Toggle Mobile -->
+      <button id="menu-toggle" class="md:hidden p-2 focus:outline-none focus:ring-2 focus:ring-stone-400" aria-label="Abrir menú">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+    </div>
+
+    <!-- Menú Mobile -->
+    <div id="mobile-menu" class="hidden md:hidden bg-brand-light border-b border-stone-200 px-6 py-4 flex-col gap-4">
+      <a href="#productos" class="nav-link block py-2 text-lg">Productos</a>
+      <a href="#quienes-somos" class="nav-link block py-2 text-lg">Quiénes somos</a>
+      <a href="#sucursales" class="nav-link block py-2 text-lg">Sucursales</a>
+    </div>
+  </nav>
+
+  <!-- 2. HERO -->
+  <header id="inicio" class="pt-20 min-h-screen flex flex-col md:flex-row">
+    <!-- Izquierda: Texto fijo -->
+    <div class="w-full md:w-1/2 flex flex-col justify-center px-6 md:px-16 lg:px-24 py-16 z-10 gs-reveal">
+      <span class="text-xs font-bold tracking-widest uppercase text-stone-500 mb-4">ALMOHADAS Y PROTECTORES DE COLCHÓN</span>
+      <h1 class="text-5xl md:text-6xl lg:text-7xl leading-tight mb-6">El descanso empieza por los detalles.</h1>
+      <p class="text-lg md:text-xl text-stone-600 mb-10 max-w-md">Conocé las almohadas y los protectores de colchón de Fibrargent. Descubrí nuestras líneas y encontrá una opción para acompañar tu descanso de cada día.</p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+        <a href="#productos" class="nav-link bg-brand-dark text-brand-light px-8 py-4 rounded-full text-sm uppercase tracking-wider hover:bg-stone-700 transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-brand-dark">Conocé nuestros productos</a>
+        <a href="#sucursales" class="nav-link text-sm uppercase tracking-wider underline hover:text-stone-500 transition-colors py-4">Encontrá una sucursal</a>
+      </div>
+    </div>
+
+    <!-- Derecha: Slider -->
+    <div class="w-full md:w-1/2 relative h-[50vh] md:h-auto overflow-hidden group">
+      <div id="hero-slider" class="relative w-full h-full">
+        <!-- Imágenes inyectadas por JS -->
+      </div>
+      
+      <!-- Controles de Accesibilidad / Pausa -->
+      <div class="absolute bottom-6 right-6 flex gap-2 z-20">
+        <button id="slider-pause" class="bg-white/80 backdrop-blur p-2 rounded-full hover:bg-white focus:outline-none focus:ring-2 focus:ring-brand-dark transition-colors" aria-label="Pausar slider">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. FRANJA DE CARACTERÍSTICAS -->
+  <section class="bg-white py-16 px-6 border-b border-stone-200">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+      <div class="gs-reveal">
+        <div class="w-12 h-12 mx-auto bg-stone-100 rounded-full flex items-center justify-center mb-4 text-stone-600">🌙</div>
+        <h3 class="text-xl mb-2">Tu descanso, en primer lugar</h3>
+        <p class="text-stone-500 text-sm">Almohadas para acompañar tus momentos de descanso.</p>
+      </div>
+      <div class="gs-reveal delay-100">
+        <div class="w-12 h-12 mx-auto bg-stone-100 rounded-full flex items-center justify-center mb-4 text-stone-600">✨</div>
+        <h3 class="text-xl mb-2">Cuidado para tu colchón</h3>
+        <p class="text-stone-500 text-sm">Protectores para complementar el cuidado de tu cama.</p>
+      </div>
+      <div class="gs-reveal delay-200">
+        <div class="w-12 h-12 mx-auto bg-stone-100 rounded-full flex items-center justify-center mb-4 text-stone-600">🔍</div>
+        <h3 class="text-xl mb-2">Conocé nuestras líneas</h3>
+        <p class="text-stone-500 text-sm">Explorá las opciones de Fibrargent y consultá por sus características.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PRODUCTOS -->
+  <section id="productos" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-16 gs-reveal">
+        <span class="text-xs font-bold tracking-widest uppercase text-stone-500 mb-2 block">NUESTRAS LÍNEAS</span>
+        <h2 class="text-4xl md:text-5xl mb-6">Productos para tu descanso</h2>
+        <p class="text-stone-600">Explorá nuestras almohadas y protectores de colchón. Consultanos para conocer las características y la disponibilidad de cada modelo.</p>
+      </div>
+
+      <!-- Grilla generada por JS -->
+      <div id="productos-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. QUIÉNES SOMOS -->
+  <section id="quienes-somos" class="py-24 bg-stone-200 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-center gap-16">
+      <!-- Imagen -->
+      <div class="w-full md:w-1/2 aspect-square relative overflow-hidden rounded-sm gs-reveal">
+        <!-- TODO: Reemplazar por imagen real de la empresa -->
+        <img src="https://images.unsplash.com/photo-1541123437800-1bb1317bc951?q=80&w=1000&auto=format&fit=crop" alt="Dormitorio sereno con almohadas" loading="lazy" class="w-full h-full object-cover">
+      </div>
+      <!-- Texto -->
+      <div class="w-full md:w-1/2 gs-reveal delay-100">
+        <h2 class="text-4xl md:text-5xl mb-8">Un lugar para el descanso en cada hogar</h2>
+        <div class="space-y-6 text-stone-600 text-lg leading-relaxed">
+          <p>En Fibrargent nos dedicamos a la comercialización de almohadas y protectores de colchón. Nuestra propuesta reúne distintas líneas para acompañar el descanso y el cuidado de la cama.</p>
+          <p>En este espacio podés conocer nuestros productos y encontrar información para acercarte a nuestras sucursales. Si necesitás saber más sobre un modelo, podés consultarnos por WhatsApp.</p>
+          <p class="text-2xl font-serif text-brand-dark pt-6 border-t border-stone-300 mt-8">
+            Conocé Fibrargent. Descubrí nuestras líneas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SUCURSALES -->
+  <section id="sucursales" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-12 gs-reveal">
+        <h2 class="text-4xl md:text-5xl mb-4">Nuestras sucursales</h2>
+        <p class="text-stone-600">Encontrá la información de cada sucursal y consultá cómo llegar.</p>
+      </div>
+
+      <!-- Listado generado por JS -->
+      <div id="sucursales-list" class="flex flex-col border-t border-stone-200">
+      </div>
+      <p class="text-sm text-stone-400 mt-6 italic">* Datos de sucursales de muestra.</p>
+    </div>
+  </section>
+
+  <!-- 7. FOOTER -->
+  <footer class="bg-brand-dark text-stone-300 py-16 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+      <div>
+        <!-- TODO: Logo final footer -->
+        <span class="text-2xl font-serif text-white block mb-4">FIBRARGENT</span>
+        <p class="text-stone-400">Almohadas y protectores de colchón para acompañar tu descanso.</p>
+      </div>
+      <div class="flex flex-col gap-3">
+        <h4 class="text-white font-serif text-lg mb-2">Navegación</h4>
+        <a href="#inicio" class="nav-link hover:text-white w-fit transition-colors">Inicio</a>
+        <a href="#productos" class="nav-link hover:text-white w-fit transition-colors">Productos</a>
+        <a href="#quienes-somos" class="nav-link hover:text-white w-fit transition-colors">Quiénes somos</a>
+        <a href="#sucursales" class="nav-link hover:text-white w-fit transition-colors">Sucursales</a>
+      </div>
+      <div>
+        <h4 class="text-white font-serif text-lg mb-2">Hablemos de tu descanso</h4>
+        <p class="text-stone-400 mb-6">Consultanos por nuestros productos y su disponibilidad.</p>
+        <a href="#" id="footer-whatsapp" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-brand-dark px-6 py-3 rounded-full text-sm uppercase tracking-wider hover:bg-stone-200 transition-colors">
+          Consultar por WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto pt-8 border-t border-stone-700 text-sm text-stone-500 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p>Fibrargent. Todos los derechos reservados.</p>
+      <p id="current-year"></p>
+    </div>
+  </footer>
+
+  <!-- 8. BOTÓN WHATSAPP -->
+  <a href="#" id="floating-whatsapp" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-transform hover:scale-105 z-40 focus:ring-4 focus:ring-green-300" aria-label="Consultar por WhatsApp">
+    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
